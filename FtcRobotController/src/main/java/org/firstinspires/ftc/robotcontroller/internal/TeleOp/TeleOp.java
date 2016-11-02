@@ -80,11 +80,11 @@ public class TeleOp extends OpMode
         boolean sweeperPressedDown = gamepad1.dpad_down;
         if (sweeperPressedDown)
         {
-            sweeper.setPower(50.0);
+            sweeper.setPower(100.0);
         }
         else
         {
-            sweeper.setPower(-50.0);
+            sweeper.setPower(-100.0);
         }
 
     }
