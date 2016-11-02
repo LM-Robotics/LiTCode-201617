@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.robotcontroller.internal.TeleOp;
-
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeMeta;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -7,10 +6,8 @@ import org.firstinspires.ftc.robotcontroller.internal.Devices.DriveSystem;
 import org.firstinspires.ftc.robotcontroller.internal.Devices.FlyWheelMechanic;
 import org.firstinspires.ftc.robotcontroller.internal.Devices.SweeperMechanic;
 import org.firstinspires.ftc.robotcontroller.internal.Devices.TrapDoorMechanic;
-
-
 import org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot;
-import org.firstinspires.ftc.robotcontroller.internal.Devices.FlyWheelMechanic;
+
 
 /**
  * Created by abnaveed on 10/13/2016.
@@ -30,7 +27,6 @@ public class TeleOp extends OpMode
     // TeleOp
     public DcMotor leftMotor = null;
     public DcMotor rightMotor = null;
-    public FlyWheelMechanic flymotor;
     private static final float deadBand = .05f;
 
     @Override
@@ -71,7 +67,28 @@ public class TeleOp extends OpMode
 
 
         /// flywheel
-        boolean flyWheelPressed = gamepad2.right_bumper;
+        boolean flyWheelPressed = gamepad1.right_bumper;
+        if (flyWheelPressed)
+        {
+            flywheel.setPower(-100.0);
+        }
+        else
+        {
+            flywheel.setPower(100.0);
+        }
+
+        boolean sweeperPressedDown = gamepad1.dpad_down;
+        if (sweeperPressedDown)
+        {
+            sweeper.setPower(50.0);
+        }
+        else
+        {
+            sweeper.setPower(-50.0);
+        }
+
     }
+
+
 
 }
