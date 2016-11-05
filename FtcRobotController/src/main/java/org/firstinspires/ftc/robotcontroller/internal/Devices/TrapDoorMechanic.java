@@ -25,7 +25,8 @@ TrapDoorMechanic
 
     }
 
-    public synchronized void setPower(double power) {
+    public synchronized void setPower(double power)
+    {
         axelRotation[0].setPower(power);
     }
 }

@@ -8,12 +8,14 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-public class FlyWheelMechanic {
+public class FlyWheelMechanic
+{
 
     private DcMotor[]  flymotor;
 
     DcMotor[] flywheel = new DcMotor[1];
-    public FlyWheelMechanic (HardwareMap hardwareMap){
+    public FlyWheelMechanic (HardwareMap hardwareMap)
+    {
 
         flywheel[0] = hardwareMap.dcMotor.get("forwardflywheel");
 
@@ -34,6 +36,7 @@ public class FlyWheelMechanic {
     // Sets power of the two right motors
     public synchronized void setRight(double power)
     {
+
     }
 
   public synchronized void setPower(double wheelpower)
