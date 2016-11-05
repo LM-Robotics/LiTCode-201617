@@ -7,10 +7,6 @@ package org.firstinspires.ftc.teamcode.Test;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.robotcontroller.internal.Devices.FlyWheelMechanic;
-import org.firstinspires.ftc.robotcontroller.internal.Devices.SweeperMechanic;
-import org.firstinspires.ftc.robotcontroller.internal.Devices.TrapDoorMechanic;
-
 public abstract class test extends OpMode {
     public DcMotor leftMotor = null;
     public DcMotor rightMotor = null;
@@ -18,7 +14,7 @@ public abstract class test extends OpMode {
 
     @Override
     public void init() {
-        
+
     }
 
     @Override
