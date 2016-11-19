@@ -33,11 +33,7 @@ public class FlyWheelMechanic
         }
     }
 
-    // Sets power of the two right motors
-    public synchronized void setRight(double power)
-    {
 
-    }
 
   public synchronized void setPower(double wheelpower)
     {

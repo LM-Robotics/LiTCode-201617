@@ -5,7 +5,7 @@ import org.firstinspires.ftc.teamcode.Devices.DriveSystem;
 import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 import org.firstinspires.ftc.teamcode.Devices.SweeperMechanic;
 import org.firstinspires.ftc.teamcode.Devices.TrapDoorMechanic;
-import com.qualcomm.robotcore.hardware.ServoEx;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
 import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot.CLAW_MAX_RANGE;
@@ -19,24 +19,28 @@ import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9b
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Pompeii: Teleop Tank", group="Pompeii")
 public class TeleOp extends OpMode
 {
-        //public DriveSystem drive;
+        public DriveSystem drive;
 
-    //  public FlyWheelMechanic flywheel;
+      public FlyWheelMechanic flywheel;
 
         public SweeperMechanic sweeper;
 
-    public TrapDoorMechanic trapdoor;
+
 
     // TeleOp
-    private static final float deadBand = .05f;
+    double trapdoor_MIN_RANGE=0.20;
+    double trapdoor_MAX_RANGE=0.90;
+    double trapdoorPosition;
+    double trapdoorDelta = 0.1;
+    Servo trapdoor;
+
 
     @Override
     public void init()
     {
-      //  flywheel = new FlyWheelMechanic(hardwareMap);
+        flywheel = new FlyWheelMechanic(hardwareMap);
         sweeper = new SweeperMechanic(hardwareMap);
-        trapdoor = new TrapDoorMechanic(hardwareMap);
-        //drive = new DriveSystem(hardwareMap);
+        drive = new DriveSystem(hardwareMap);
     }
 
     @Override
@@ -44,7 +48,7 @@ public class TeleOp extends OpMode
     {
 
         // Getting joystick values
-        /*double leftJoystick = gamepad1.left_stick_y;
+        double leftJoystick = gamepad1.left_stick_y;
         double rightJoystick = gamepad1.right_stick_y;
         if(leftJoystick > 0.05 || leftJoystick < -0.05)
         {
@@ -60,16 +64,16 @@ public class TeleOp extends OpMode
         }
         else {
             drive.setRight(0);
-        }*/
+        }
 
 
         //set motor power
-        // Converting joystick values to motor power values
+         //Converting joystick values to motor power values
 
 
 
-        /// flywheel
-        /*boolean flyWheelPressed = gamepad2.right_bumper;
+         //flywheel
+        boolean flyWheelPressed = gamepad2.right_bumper;
         if (flyWheelPressed)
         {
             flywheel.setPower(-1);
@@ -78,7 +82,7 @@ public class TeleOp extends OpMode
         {
             flywheel.setPower(0);
         }
-        */
+
         boolean sweeperPressedDown = gamepad1.dpad_down;
         if (sweeperPressedDown)
         {
@@ -97,17 +101,20 @@ public class TeleOp extends OpMode
         {
             sweeper.setPower(0);
         }
-
-        if (gamepad1.dpad_right;) {
+        trapdoor = hardwareMap.servo.get("servo_6");
+        trapdoorPosition = 0.20;
+        boolean trapdoorPressedDown = gamepad1.x;
+        boolean trapdoorPressedUp = gamepad1.y;
+        if (trapdoorPressedDown) {
         trapdoorPosition += trapdoorDelta;
 
     }
-        if (gamepad1.b) {
-            clawPosition -= clawDelta;
+        if (trapdoorPressedUp) {
+            trapdoorPosition -= trapdoorDelta;
         }
 
 
-        trapdoorPosition = Range.clip(clawPosition, CLAW_MIN_RANGE, CLAW_MAX_RANGE);
+        trapdoorPosition = Range.clip(trapdoorPosition, trapdoor_MIN_RANGE, trapdoor_MAX_RANGE);
 
 
         trapdoor.setPosition(trapdoorPosition);
@@ -116,6 +123,6 @@ public class TeleOp extends OpMode
     }
 
 }
-/*
-    }
-}
+
+
+

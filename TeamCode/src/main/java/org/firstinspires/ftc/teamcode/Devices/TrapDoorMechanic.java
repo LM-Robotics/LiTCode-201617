@@ -14,8 +14,8 @@ import com.qualcomm.robotcore.util.Range;
 
 public class TrapDoorMechanic
 {
-    final static double trapdoor_MIN_RANGE=0.20;
-    final static double trapdoor_MAX_RANGE=0.90;
+     double trapdoor_MIN_RANGE=0.20;
+     double trapdoor_MAX_RANGE=0.90;
     double trapdoorPosition;
     double trapdoorDelta = 0.1;
     Servo trapdoor;
