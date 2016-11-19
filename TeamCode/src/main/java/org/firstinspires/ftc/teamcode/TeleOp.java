@@ -6,7 +6,10 @@ import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 import org.firstinspires.ftc.teamcode.Devices.SweeperMechanic;
 import org.firstinspires.ftc.teamcode.Devices.TrapDoorMechanic;
 import com.qualcomm.robotcore.hardware.ServoEx;
+import com.qualcomm.robotcore.util.Range;
 
+import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot.CLAW_MAX_RANGE;
+import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot.CLAW_MIN_RANGE;
 
 
 /**
@@ -22,7 +25,7 @@ public class TeleOp extends OpMode
 
         public SweeperMechanic sweeper;
 
-//    public TrapDoorMechanic trapdoor;
+    public TrapDoorMechanic trapdoor;
 
     // TeleOp
     private static final float deadBand = .05f;
@@ -32,7 +35,7 @@ public class TeleOp extends OpMode
     {
       //  flywheel = new FlyWheelMechanic(hardwareMap);
         sweeper = new SweeperMechanic(hardwareMap);
-     //   trapdoor = new TrapDoorMechanic(hardwareMap);
+        trapdoor = new TrapDoorMechanic(hardwareMap);
         //drive = new DriveSystem(hardwareMap);
     }
 
@@ -94,5 +97,25 @@ public class TeleOp extends OpMode
         {
             sweeper.setPower(0);
         }
+
+        if (gamepad1.dpad_right;) {
+        trapdoorPosition += trapdoorDelta;
+
+    }
+        if (gamepad1.b) {
+            clawPosition -= clawDelta;
+        }
+
+
+        trapdoorPosition = Range.clip(clawPosition, CLAW_MIN_RANGE, CLAW_MAX_RANGE);
+
+
+        trapdoor.setPosition(trapdoorPosition);
+
+
+    }
+
+}
+/*
     }
 }

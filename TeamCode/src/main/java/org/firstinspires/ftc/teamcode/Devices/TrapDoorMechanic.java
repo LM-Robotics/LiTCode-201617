@@ -3,31 +3,30 @@ package org.firstinspires.ftc.teamcode.Devices;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.Range;
 
 /**
  * Created by Eamonn on 10/29/2016. Funtastic.
  */
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-public class
 
-TrapDoorMechanic
+public class TrapDoorMechanic
 {
-    private DcMotor[] axelRotation = null;
+    final static double trapdoor_MIN_RANGE=0.20;
+    final static double trapdoor_MAX_RANGE=0.90;
+    double trapdoorPosition;
+    double trapdoorDelta = 0.1;
+    Servo trapdoor;
 
     public TrapDoorMechanic(HardwareMap hardwareMap)
     {
-        axelRotation = new DcMotor[1];
-        axelRotation[0] = hardwareMap.dcMotor.get("trapDoorMotor");
+        trapdoor = hardwareMap.servo.get("servo_6");
+        trapdoorPosition = 0.20;
 
     }
 
-    public synchronized void setPower(double power)
-    {
-        axelRotation[0].setPower(power);
-    }
+
 }
 
