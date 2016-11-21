@@ -45,11 +45,4 @@ public class DriveSystem
             motor.setPower(power);
         }
     }
-    public synchronized void setBoth (double leftPower, double rightPower)// double setPower)
-    {
-        setLeft(leftPower);
-        setRight(rightPower);
-
-
-    }
 }
