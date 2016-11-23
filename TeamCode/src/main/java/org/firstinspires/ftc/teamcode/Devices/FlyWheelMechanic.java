@@ -22,7 +22,7 @@ public class FlyWheelMechanic
 
     }
 
-    // Sets power of the two left motors
+    // Sets power of the two left motorsn
     public synchronized void setwheel(double power)
     {
         double convertedPower = ((double)power)/100.0;

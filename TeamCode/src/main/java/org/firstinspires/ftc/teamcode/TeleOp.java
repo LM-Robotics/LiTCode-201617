@@ -19,7 +19,7 @@ import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9b
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Pompeii: Teleop Tank", group="Pompeii")
 public class TeleOp extends OpMode
 {
-        public DriveSystem drive;
+        //public DriveSystem drive;
 
       public FlyWheelMechanic flywheel;
 
@@ -28,11 +28,11 @@ public class TeleOp extends OpMode
 
 
     // TeleOp
-    double trapdoor_MIN_RANGE=0.20;
+    /*double trapdoor_MIN_RANGE=0.20;
     double trapdoor_MAX_RANGE=0.90;
     double trapdoorPosition;
     double trapdoorDelta = 0.1;
-    Servo trapdoor;
+    Servo trapdoor;*/
 
 
     @Override
@@ -40,7 +40,7 @@ public class TeleOp extends OpMode
     {
         flywheel = new FlyWheelMechanic(hardwareMap);
         sweeper = new SweeperMechanic(hardwareMap);
-        drive = new DriveSystem(hardwareMap);
+       // drive = new DriveSystem(hardwareMap);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class TeleOp extends OpMode
     {
 
         // Getting joystick values
-        double leftJoystick = gamepad1.left_stick_y;
+       /* double leftJoystick = gamepad1.left_stick_y;
         double rightJoystick = gamepad1.right_stick_y;
         if(leftJoystick > 0.05 || leftJoystick < -0.05)
         {
@@ -64,7 +64,7 @@ public class TeleOp extends OpMode
         }
         else {
             drive.setRight(0);
-        }
+        }*/
 
 
         //set motor power
@@ -84,16 +84,12 @@ public class TeleOp extends OpMode
         }
 
         boolean sweeperPressedDown = gamepad1.dpad_down;
+        boolean sweeperPressedUp = gamepad1.dpad_up;
         if (sweeperPressedDown)
         {
             sweeper.setPower(-1);
         }
-        else
-        {
-            sweeper.setPower(0);
-        }
-        boolean sweeperPressedUp = gamepad1.dpad_up;
-        if (sweeperPressedUp)
+        else if (sweeperPressedUp)
         {
             sweeper.setPower(1);
         }
@@ -101,10 +97,11 @@ public class TeleOp extends OpMode
         {
             sweeper.setPower(0);
         }
-        trapdoor = hardwareMap.servo.get("servo_6");
+
+        /*trapdoor = hardwareMap.servo.get("servo_6");
         trapdoorPosition = 0.20;
-        boolean trapdoorPressedDown = gamepad1.x;
-        boolean trapdoorPressedUp = gamepad1.y;
+        boolean trapdoorPressedDown = gamepad1.right_trigger;
+        boolean trapdoorPressedUp = gamepad1.left_trigger;
         if (trapdoorPressedDown) {
         trapdoorPosition += trapdoorDelta;
 
@@ -117,7 +114,7 @@ public class TeleOp extends OpMode
         trapdoorPosition = Range.clip(trapdoorPosition, trapdoor_MIN_RANGE, trapdoor_MAX_RANGE);
 
 
-        trapdoor.setPosition(trapdoorPosition);
+        trapdoor.setPosition(trapdoorPosition);*/
 
 
     }
