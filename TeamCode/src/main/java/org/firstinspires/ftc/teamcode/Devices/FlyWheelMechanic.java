@@ -6,14 +6,14 @@ package org.firstinspires.ftc.teamcode.Devices;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+
 
 public class FlyWheelMechanic
 {
 
-    private DcMotor[]  flymotor;
+    public DcMotor[]  flywheel;
 
-    DcMotor[] flywheel = new DcMotor[1];
+
     public FlyWheelMechanic (HardwareMap hardwareMap)
     {
 
