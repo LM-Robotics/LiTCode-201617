@@ -5,7 +5,7 @@ import org.firstinspires.ftc.teamcode.Devices.DriveSystem;
 import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 import org.firstinspires.ftc.teamcode.Devices.SweeperMechanic;
 import org.firstinspires.ftc.teamcode.Devices.TrapDoorMechanic;
-import com.qualcomm.robotcore.hardware.ServoEx;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 
@@ -14,34 +14,34 @@ import com.qualcomm.robotcore.hardware.ServoEx;
  */
 
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Pompeii: Teleop Tank", group="Pompeii")
-public class TeleOp extends OpMode
-{
-        //public DriveSystem drive;
+public class TeleOp extends OpMode {
+    public DriveSystem drive;
 
-    //  public FlyWheelMechanic flywheel;
+    public FlyWheelMechanic flywheel;
 
-        public SweeperMechanic sweeper;
+    public SweeperMechanic sweeper;
 
-//    public TrapDoorMechanic trapdoor;
+    public TrapDoorMechanic trapdoor;
 
+    boolean bumperPressedOff = false;
+    boolean flyWheelOn = true;
+    boolean buttonAPressedOff = false;
+    boolean trapDoorMove =  false;
     // TeleOp
-    private static final float deadBand = .05f;
 
     @Override
-    public void init()
-    {
-      //  flywheel = new FlyWheelMechanic(hardwareMap);
+    public void init() {
+        FlyWheelMechanic flywheel = new FlyWheelMechanic(hardwareMap);
         sweeper = new SweeperMechanic(hardwareMap);
-     //   trapdoor = new TrapDoorMechanic(hardwareMap);
-        //drive = new DriveSystem(hardwareMap);
+        trapdoor = new TrapDoorMechanic(hardwareMap);
+        drive = new DriveSystem(hardwareMap);
     }
 
     @Override
-    public void loop()
-    {
+    public void loop() {
 
         // Getting joystick values
-        /*double leftJoystick = gamepad1.left_stick_y;
+        double leftJoystick = gamepad1.left_stick_y;
         double rightJoystick = gamepad1.right_stick_y;
         if(leftJoystick > 0.05 || leftJoystick < -0.05)
         {
@@ -57,41 +57,54 @@ public class TeleOp extends OpMode
         }
         else {
             drive.setRight(0);
-        }*/
+        }
 
-
-        //set motor power
-        // Converting joystick values to motor power values
-
-
-
-        /// flywheel
-        /*boolean flyWheelPressed = gamepad2.right_bumper;
-        if (flyWheelPressed)
+        if (!(gamepad2.a))
         {
-            flywheel.setPower(-1);
+            bumperPressedOff = true;
+        }
+
+        if (trapDoorMove && gamepad2.a && buttonAPressedOff) {
+            trapDoorMove = false;
+            buttonAPressedOff = false;
+        } else if (!(trapDoorMove) && gamepad2.a && buttonAPressedOff) {
+            flyWheelOn = true;
+            buttonAPressedOff = false;
+        }
+        if (!(trapDoorMove))
+        {
+            trapdoor.setPosition(1);
         }
         else
         {
+            trapdoor.setPosition(0);
+        }
+
+        if (!(gamepad2.right_bumper))
+        {
+            bumperPressedOff = true;
+        }
+
+        if (flyWheelOn && gamepad2.right_bumper && bumperPressedOff) {
+            flyWheelOn = false;
+            bumperPressedOff = false;
+        } else if (!(flyWheelOn) && gamepad2.right_bumper && bumperPressedOff) {
+            flyWheelOn = true;
+            bumperPressedOff = false;
+        }
+        if (flyWheelOn) {
+            flywheel.setPower(-1);
+        } else {
             flywheel.setPower(0);
         }
-        */
-        boolean sweeperPressedDown = gamepad1.dpad_down;
-        if (sweeperPressedDown)
-        {
+
+
+
+        if (gamepad2.dpad_down) {
             sweeper.setPower(-1);
-        }
-        else
-        {
-            sweeper.setPower(0);
-        }
-        boolean sweeperPressedUp = gamepad1.dpad_up;
-        if (sweeperPressedUp)
-        {
+        } else if (gamepad2.dpad_up) {
             sweeper.setPower(1);
-        }
-        else
-        {
+        } else {
             sweeper.setPower(0);
         }
     }
