@@ -16,17 +16,17 @@ public class Navigation
         drive.setLeft(power);
         Thread.sleep(time*1000);
     }
-    /*public synchronized void turnRight (double power, long time) throws InterruptedException
+    public synchronized void turnRight (double power, long time) throws InterruptedException
     {
         drive.setBoth(power, -power);
-        Thread.sleep(time);
+        Thread.sleep(time*1000);
 
     }
     public synchronized void turnLeft (double power, long time) throws InterruptedException
     {
         drive.setBoth(-power, power);
-        Thread.sleep(time);
+        Thread.sleep(time*1000);
 
-    }*/
+    }
 
 }
