@@ -1,4 +1,10 @@
 package org.firstinspires.ftc.teamcode.Devices;
+<<<<<<< HEAD
+
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+=======
+>>>>>>> 718d436490e53b65cf45db7fea7ade0897ff8c04
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -8,22 +14,21 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 
-
 public class TrapDoorMechanic
 {
-     double trapdoor_MIN_RANGE=0.20;
-     double trapdoor_MAX_RANGE=0.90;
-    double trapdoorPosition;
-    double trapdoorDelta = 0.1;
-    Servo trapdoor;
+    Servo[] trapDoor;
 
     public TrapDoorMechanic(HardwareMap hardwareMap)
     {
-        trapdoor = hardwareMap.servo.get("servo_6");
-        trapdoorPosition = 0.20;
-
+        trapDoor = new Servo[1];
+        trapDoor[1] = hardwareMap.servo.get("trapDoorServo");
     }
 
+    public synchronized void setPosition(double angle)
+    {
+            // Set the motor power to power
+            trapDoor[1].setPosition(angle);
+    }
 
 }
 

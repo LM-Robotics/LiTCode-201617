@@ -10,15 +10,20 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class SweeperMechanic
 {
-    private DcMotor axelRotation;
+    private DcMotor[] axelRotation;
 
     public SweeperMechanic(HardwareMap hardwareMap)
     {
-        axelRotation = hardwareMap.dcMotor.get("sweeperMechanicMotor");
+        axelRotation = new DcMotor[1];
+        axelRotation[0] = hardwareMap.dcMotor.get("sweeperMechanicMotor");
 
     }
     public synchronized void setPower(double power)
     {
-        axelRotation.setPower(power);
+
+        for (DcMotor motor : axelRotation) {
+            // Set the motor power to power
+            motor.setPower(power);
+        }
     }
 }

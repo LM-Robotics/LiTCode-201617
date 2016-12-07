@@ -23,12 +23,20 @@ public class DriveSystem
         rightMotors[0] = hardwareMap.dcMotor.get("frontRightDriveMotor");
         rightMotors[1] = hardwareMap.dcMotor.get("backRightDriveMotor");
 
+
+    }
+
+    // Sets power of the two left motors
+    public synchronized void setLeft(double power)
+    {
+
         rightMotors[0].setDirection(DcMotorSimple.Direction.FORWARD);
         rightMotors[1].setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
     // Sets power of the two left motors
     public synchronized void setLeft(double power){
+
         // for each motor in leftMotors
         for (DcMotor motor : leftMotors) {
             // Set the motor power to power
@@ -45,4 +53,13 @@ public class DriveSystem
             motor.setPower(power);
         }
     }
+
+
+    public synchronized void setBoth (double leftPower, double rightPower)// double setPower)
+    {
+        setLeft(leftPower);
+        setRight(rightPower);
+
+    }
+
 }

@@ -11,33 +11,31 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class FlyWheelMechanic
 {
 
-    public DcMotor[]  flywheel;
+
+    private DcMotor[] flywheel;
 
 
     public FlyWheelMechanic (HardwareMap hardwareMap)
     {
+        flywheel = new DcMotor[1];
 
         flywheel[0] = hardwareMap.dcMotor.get("forwardflywheel");
 
-
     }
 
-    // Sets power of the two left motorsn
-    public synchronized void setwheel(double power)
+
+    // Sets power of the two left motors
+    public synchronized void setPower(double power)
+
     {
-        double convertedPower = ((double)power)/100.0;
         // for each motor in leftMotors
         for (DcMotor motor :flywheel){
             // Set the motor power to power
-            motor.setPower(convertedPower);
+            motor.setPower(power);
         }
     }
 
 
 
-  public synchronized void setPower(double wheelpower)
-    {
-        setwheel(wheelpower);
 
-    }
 }
