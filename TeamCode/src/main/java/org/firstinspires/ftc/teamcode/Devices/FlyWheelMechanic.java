@@ -6,12 +6,14 @@ package org.firstinspires.ftc.teamcode.Devices;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+
 
 public class FlyWheelMechanic
 {
 
+
     private DcMotor[] flywheel;
+
 
     public FlyWheelMechanic (HardwareMap hardwareMap)
     {
@@ -21,8 +23,10 @@ public class FlyWheelMechanic
 
     }
 
+
     // Sets power of the two left motors
     public synchronized void setPower(double power)
+
     {
         // for each motor in leftMotors
         for (DcMotor motor :flywheel){

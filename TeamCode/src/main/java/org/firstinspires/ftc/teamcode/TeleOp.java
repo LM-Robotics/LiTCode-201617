@@ -8,6 +8,8 @@ import org.firstinspires.ftc.teamcode.Devices.TrapDoorMechanic;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.Range;
 
+import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot.CLAW_MAX_RANGE;
+import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot.CLAW_MIN_RANGE;
 
 
 /**
@@ -19,17 +21,21 @@ public class TeleOp extends OpMode
 {
     public DriveSystem drive;
 
-    public FlyWheelMechanic flywheel;
+   public FlyWheelMechanic flywheel;
+
 
     public SweeperMechanic sweeper;
 
+
     public TrapDoorMechanic trapdoor;
+
 
     boolean bumperPressedOff = false;
     boolean flyWheelOn = false;
     boolean buttonAPressedOff = false;
     boolean trapDoorMove =  false;
     // TeleOp
+
 
     @Override
     public void init()
@@ -44,7 +50,9 @@ public class TeleOp extends OpMode
     public void loop()
     {
         // Getting joystick values
-        double leftJoystick = gamepad1.left_stick_y;
+
+       /* double leftJoystick = gamepad1.left_stick_y;
+
         double rightJoystick = gamepad1.right_stick_y;
         if(leftJoystick > 0.05 || leftJoystick < -0.05)
         {
@@ -62,10 +70,15 @@ public class TeleOp extends OpMode
             drive.setRight(0);
         }
 
+
         if (!(gamepad2.a))
         {
             buttonAPressedOff = true;
         }
+
+        //set motor power
+         //Converting joystick values to motor power values
+
 
         if (trapDoorMove && gamepad2.a && buttonAPressedOff)
         {
@@ -91,6 +104,7 @@ public class TeleOp extends OpMode
             bumperPressedOff = true;
         }
 
+
         if (flyWheelOn && gamepad2.right_bumper && bumperPressedOff)
         {
             flyWheelOn = false;
@@ -102,6 +116,7 @@ public class TeleOp extends OpMode
             bumperPressedOff = false;
         }
         if (flyWheelOn)
+
         {
             flywheel.setPower(-1);
         }
@@ -117,6 +132,14 @@ public class TeleOp extends OpMode
             sweeper.setPower(-1);
         }
         else if (gamepad2.dpad_up)
+
+        boolean sweeperPressedDown = gamepad1.dpad_down;
+        boolean sweeperPressedUp = gamepad1.dpad_up;
+        if (sweeperPressedDown)
+        {
+            sweeper.setPower(-1);
+        }
+        else if (sweeperPressedUp)
         {
             sweeper.setPower(1);
         }
@@ -124,5 +147,29 @@ public class TeleOp extends OpMode
         {
             sweeper.setPower(0);
         }
+
+        /*trapdoor = hardwareMap.servo.get("servo_6");
+        trapdoorPosition = 0.20;
+        boolean trapdoorPressedDown = gamepad1.right_trigger;
+        boolean trapdoorPressedUp = gamepad1.left_trigger;
+        if (trapdoorPressedDown) {
+        trapdoorPosition += trapdoorDelta;
+
     }
+        if (trapdoorPressedUp) {
+            trapdoorPosition -= trapdoorDelta;
+        }
+
+
+        trapdoorPosition = Range.clip(trapdoorPosition, trapdoor_MIN_RANGE, trapdoor_MAX_RANGE);
+
+
+        trapdoor.setPosition(trapdoorPosition);*/
+
+
+    }
+
 }
+
+
+
