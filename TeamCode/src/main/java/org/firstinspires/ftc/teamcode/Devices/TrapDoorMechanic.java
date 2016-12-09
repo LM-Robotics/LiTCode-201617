@@ -1,12 +1,8 @@
 package org.firstinspires.ftc.teamcode.Devices;
-<<<<<<< HEAD
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-=======
->>>>>>> 718d436490e53b65cf45db7fea7ade0897ff8c04
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
+
 
 
 /**
