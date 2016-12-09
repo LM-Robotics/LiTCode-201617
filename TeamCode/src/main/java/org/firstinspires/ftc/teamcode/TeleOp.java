@@ -87,7 +87,7 @@ public class TeleOp extends OpMode
         }
         else if (!(trapDoorDown) && gamepad2.a && buttonAPressedOff)
         {
-            flyWheelOn = true;
+            trapDoorDown = true;
             buttonAPressedOff = false;
         }
         if (!(trapDoorDown))
@@ -110,7 +110,7 @@ public class TeleOp extends OpMode
             flyWheelOn = false;
             bumperPressedOff = false;
         }
-        else if (!(flyWheelOn) && gamepad2.right_bumper && bumperPressedOff)
+        if (!(flyWheelOn) && gamepad2.right_bumper && bumperPressedOff)
         {
             flyWheelOn = true;
             bumperPressedOff = false;
@@ -118,22 +118,18 @@ public class TeleOp extends OpMode
         if (flyWheelOn)
 
         {
-            flywheel.setPower(-1);
+            flywheel.setPower(1);
         }
         else
         {
             flywheel.setPower(0);
         }
 
-        boolean sweeperPressedDown = gamepad1.dpad_down;
-
-        boolean sweeperPressedUp = gamepad1.dpad_up;
-
-
         if (gamepad2.dpad_down)
         {
             sweeper.setPower(-1);
-        } else if (gamepad2.dpad_up)
+        }
+        else if (gamepad2.dpad_up)
         {
             sweeper.setPower(1);
         }

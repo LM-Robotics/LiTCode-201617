@@ -17,13 +17,13 @@ public class TrapDoorMechanic
     public TrapDoorMechanic(HardwareMap hardwareMap)
     {
         trapDoor = new Servo[1];
-        trapDoor[1] = hardwareMap.servo.get("trapDoorServo");
+        trapDoor[0] = hardwareMap.servo.get("trapDoorServo");
     }
 
     public synchronized void setPosition(double angle)
     {
             // Set the motor power to power
-            trapDoor[1].setPosition(angle);
+            trapDoor[0].setPosition(angle);
     }
 
 }

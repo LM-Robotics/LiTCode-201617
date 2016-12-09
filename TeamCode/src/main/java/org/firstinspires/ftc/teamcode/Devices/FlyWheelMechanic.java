@@ -29,10 +29,7 @@ public class FlyWheelMechanic
 
     {
         // for each motor in leftMotors
-        for (DcMotor motor :flywheel){
-            // Set the motor power to power
-            motor.setPower(power);
-        }
+        flywheel[0].setPower(power);
     }
 
 

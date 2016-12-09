@@ -25,7 +25,7 @@ public class Autonomous extends LinearOpMode {
         waitForStart();
         flywheel.setPower(1);
         Thread.sleep(1);
-        trapDoor.setPosition(0.5);
+        trapDoor.setPosition(0);
         nav.driveForward(1,4);
     }
 
