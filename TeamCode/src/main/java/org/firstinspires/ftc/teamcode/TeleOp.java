@@ -33,7 +33,7 @@ public class TeleOp extends OpMode
     boolean bumperPressedOff = false;
     boolean flyWheelOn = false;
     boolean buttonAPressedOff = false;
-    boolean trapDoorMove =  false;
+    boolean trapDoorDown =  false;
     // TeleOp
 
 
@@ -51,7 +51,7 @@ public class TeleOp extends OpMode
     {
         // Getting joystick values
 
-       /* double leftJoystick = gamepad1.left_stick_y;
+       double leftJoystick = gamepad1.left_stick_y;
 
         double rightJoystick = gamepad1.right_stick_y;
         if(leftJoystick > 0.05 || leftJoystick < -0.05)
@@ -80,17 +80,17 @@ public class TeleOp extends OpMode
          //Converting joystick values to motor power values
 
 
-        if (trapDoorMove && gamepad2.a && buttonAPressedOff)
+        if (trapDoorDown && gamepad2.a && buttonAPressedOff)
         {
-            trapDoorMove = false;
+            trapDoorDown = false;
             buttonAPressedOff = false;
         }
-        else if (!(trapDoorMove) && gamepad2.a && buttonAPressedOff)
+        else if (!(trapDoorDown) && gamepad2.a && buttonAPressedOff)
         {
             flyWheelOn = true;
             buttonAPressedOff = false;
         }
-        if (!(trapDoorMove))
+        if (!(trapDoorDown))
         {
             trapdoor.setPosition(.5);
         }
@@ -125,21 +125,15 @@ public class TeleOp extends OpMode
             flywheel.setPower(0);
         }
 
+        boolean sweeperPressedDown = gamepad1.dpad_down;
+
+        boolean sweeperPressedUp = gamepad1.dpad_up;
 
 
         if (gamepad2.dpad_down)
         {
             sweeper.setPower(-1);
-        }
-        else if (gamepad2.dpad_up)
-
-        boolean sweeperPressedDown = gamepad1.dpad_down;
-        boolean sweeperPressedUp = gamepad1.dpad_up;
-        if (sweeperPressedDown)
-        {
-            sweeper.setPower(-1);
-        }
-        else if (sweeperPressedUp)
+        } else if (gamepad2.dpad_up)
         {
             sweeper.setPower(1);
         }
@@ -148,23 +142,11 @@ public class TeleOp extends OpMode
             sweeper.setPower(0);
         }
 
-        /*trapdoor = hardwareMap.servo.get("servo_6");
-        trapdoorPosition = 0.20;
-        boolean trapdoorPressedDown = gamepad1.right_trigger;
-        boolean trapdoorPressedUp = gamepad1.left_trigger;
-        if (trapdoorPressedDown) {
-        trapdoorPosition += trapdoorDelta;
-
-    }
-        if (trapdoorPressedUp) {
-            trapdoorPosition -= trapdoorDelta;
-        }
 
 
-        trapdoorPosition = Range.clip(trapdoorPosition, trapdoor_MIN_RANGE, trapdoor_MAX_RANGE);
 
 
-        trapdoor.setPosition(trapdoorPosition);*/
+
 
 
     }
