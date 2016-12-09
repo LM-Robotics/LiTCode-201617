@@ -19,7 +19,7 @@ public class FlyWheelMechanic
     {
         flywheel = new DcMotor[1];
 
-        flywheel[0] = hardwareMap.dcMotor.get("forwardflywheel");
+        flywheel[0] = hardwareMap.dcMotor.get("flywheelMotor");
 
     }
 

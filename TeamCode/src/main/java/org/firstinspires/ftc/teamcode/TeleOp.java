@@ -51,9 +51,10 @@ public class TeleOp extends OpMode
     {
         // Getting joystick values
 
-       double leftJoystick = gamepad1.left_stick_y;
+        double leftJoystick = gamepad1.left_stick_y;
 
         double rightJoystick = gamepad1.right_stick_y;
+
         if(leftJoystick > 0.05 || leftJoystick < -0.05)
         {
            drive.setLeft(leftJoystick);
@@ -66,7 +67,8 @@ public class TeleOp extends OpMode
         {
             drive.setRight(rightJoystick);
         }
-        else {
+        else
+        {
             drive.setRight(0);
         }
 
@@ -137,14 +139,6 @@ public class TeleOp extends OpMode
         {
             sweeper.setPower(0);
         }
-
-
-
-
-
-
-
-
     }
 
 }
