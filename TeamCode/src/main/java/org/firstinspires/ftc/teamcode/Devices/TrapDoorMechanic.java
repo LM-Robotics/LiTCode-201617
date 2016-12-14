@@ -12,18 +12,17 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class TrapDoorMechanic
 {
-    Servo[] trapDoor;
+    Servo trapDoor;
 
     public TrapDoorMechanic(HardwareMap hardwareMap)
     {
-        trapDoor = new Servo[1];
-        trapDoor[1] = hardwareMap.servo.get("trapDoorServo");
+        trapDoor = hardwareMap.servo.get("trapDoorServo");
     }
 
     public synchronized void setPosition(double angle)
     {
             // Set the motor power to power
-            trapDoor[1].setPosition(angle);
+            trapDoor.setPosition(angle);
     }
 
 }
