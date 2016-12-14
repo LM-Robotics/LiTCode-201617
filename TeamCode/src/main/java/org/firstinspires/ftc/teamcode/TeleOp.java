@@ -74,8 +74,6 @@ public class TeleOp extends OpMode
 
         //set motor power
          //Converting joystick values to motor power values
-
-
         if (trapDoorDown && gamepad2.a && buttonAPressedOff)
         {
             trapDoorDown = false;
@@ -134,7 +132,6 @@ public class TeleOp extends OpMode
             sweeper.setPower(0);
         }
     }
-
 }
 
 

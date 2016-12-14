@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 import org.firstinspires.ftc.teamcode.Devices.TrapDoorMechanic;
 import org.firstinspires.ftc.teamcode.Navigation;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import org.firstinspires.ftc.teamcode.Devices.DriveSystem;
 import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 /**
  * Created by adsweiger on 11/12/2016.
@@ -11,24 +10,25 @@ import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 
 
 public class Autonomous extends LinearOpMode {
+
     private FlyWheelMechanic flywheel;
-    private DriveSystem drive;
     private TrapDoorMechanic trapDoor;
     private Navigation nav;
+
     @Override
     public void runOpMode() throws InterruptedException
     {
-        drive = new DriveSystem(hardwareMap);
         flywheel = new FlyWheelMechanic(hardwareMap);
         trapDoor = new TrapDoorMechanic(hardwareMap);
         nav = new Navigation();
+
         waitForStart();
+
         flywheel.setPower(1);
-        Thread.sleep(1);
+        Thread.sleep(3);
         trapDoor.setPosition(0);
+        nav.driveForward(1,1);
+        nav.turnLeft(1);
         nav.driveForward(1,4);
     }
-
-
-
 }

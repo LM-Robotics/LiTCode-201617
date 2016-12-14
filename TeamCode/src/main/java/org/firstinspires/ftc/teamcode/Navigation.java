@@ -7,23 +7,25 @@ import org.firstinspires.ftc.teamcode.Devices.DriveSystem;
  */
 public class Navigation
 {
-    public DriveSystem drive;
+    private DriveSystem drive;
 
-    public synchronized void driveForward (double power, long time) throws InterruptedException
+    synchronized void driveForward (double power, long time) throws InterruptedException
     {
         drive.setBoth(power, power);
         Thread.sleep(time*1000);
     }
-    public synchronized void turnRight (double power, long time) throws InterruptedException
+
+    public synchronized void turnRight (long angle) throws InterruptedException
     {
-        drive.setBoth(power, -power);
-        Thread.sleep(time*1000);
+        drive.setBoth(1, -1);
+        Thread.sleep(angle*1000);
 
     }
-    public synchronized void turnLeft (double power, long time) throws InterruptedException
+
+    public synchronized void turnLeft (long angle) throws InterruptedException
     {
-        drive.setBoth(-power, power);
-        Thread.sleep(time*1000);
+        drive.setBoth(-1, 1);
+        Thread.sleep(angle*1000);
 
     }
 
