@@ -10,10 +10,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class FlyWheelMechanic
 {
-
-
     private DcMotor[] flywheel;
-
 
     public FlyWheelMechanic (HardwareMap hardwareMap)
     {

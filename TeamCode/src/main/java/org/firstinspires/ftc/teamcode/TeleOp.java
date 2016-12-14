@@ -19,23 +19,16 @@ import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9b
 @com.qualcomm.robotcore.eventloop.opmode.TeleOp(name="Pompeii: Teleop Tank", group="Pompeii")
 public class TeleOp extends OpMode
 {
-    public DriveSystem drive;
+    private DriveSystem drive;
+    private FlyWheelMechanic flywheel;
+    private SweeperMechanic sweeper;
+    private TrapDoorMechanic trapdoor;
 
-   public FlyWheelMechanic flywheel;
-
-
-    public SweeperMechanic sweeper;
-
-
-    public TrapDoorMechanic trapdoor;
-
-
-    boolean bumperPressedOff = false;
-    boolean flyWheelOn = false;
-    boolean buttonAPressedOff = false;
-    boolean trapDoorDown =  false;
+    private boolean bumperPressedOff = false;
+    private boolean flyWheelOn = false;
+    private boolean buttonAPressedOff = false;
+    private boolean trapDoorDown =  false;
     // TeleOp
-
 
     @Override
     public void init()
@@ -59,7 +52,8 @@ public class TeleOp extends OpMode
         {
            drive.setLeft(leftJoystick);
         }
-        else {
+        else
+        {
             drive.setLeft(0);
         }
 
@@ -92,13 +86,13 @@ public class TeleOp extends OpMode
             trapDoorDown = true;
             buttonAPressedOff = false;
         }
-        if (!(trapDoorDown))
+        if (trapDoorDown)
         {
-            trapdoor.setPosition(.5);
+            trapdoor.setPosition(0);
         }
         else
         {
-            trapdoor.setPosition(0);
+            trapdoor.setPosition(0.5);
         }
 
         if (!(gamepad2.right_bumper))

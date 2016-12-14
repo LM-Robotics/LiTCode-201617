@@ -11,10 +11,10 @@ import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 
 
 public class Autonomous extends LinearOpMode {
-    public FlyWheelMechanic flywheel;
-    public DriveSystem drive;
-    public TrapDoorMechanic trapDoor;
-    public Navigation nav;
+    private FlyWheelMechanic flywheel;
+    private DriveSystem drive;
+    private TrapDoorMechanic trapDoor;
+    private Navigation nav;
     @Override
     public void runOpMode() throws InterruptedException
     {

@@ -29,9 +29,11 @@ public class DriveSystem
     // Sets power of the two left motors
     public synchronized void setLeft(double power)
     {
+        for (DcMotor motor : leftMotors) {
+            // Set the motor power to power
+            motor.setPower(power);
+        }
 
-        rightMotors[0].setDirection(DcMotorSimple.Direction.FORWARD);
-        rightMotors[1].setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
 

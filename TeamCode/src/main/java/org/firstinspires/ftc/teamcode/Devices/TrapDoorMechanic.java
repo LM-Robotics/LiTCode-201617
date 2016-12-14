@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class TrapDoorMechanic
 {
-    Servo[] trapDoor;
+    private Servo[] trapDoor;
 
     public TrapDoorMechanic(HardwareMap hardwareMap)
     {
