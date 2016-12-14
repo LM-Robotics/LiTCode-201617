@@ -44,10 +44,9 @@ public class TeleOp extends OpMode
     {
         // Getting joystick values
 
-        double leftJoystick = gamepad1.left_stick_y;
+       double leftJoystick = gamepad1.left_stick_y;
 
         double rightJoystick = gamepad1.right_stick_y;
-
         if(leftJoystick > 0.05 || leftJoystick < -0.05)
         {
            drive.setLeft(leftJoystick);
@@ -61,8 +60,7 @@ public class TeleOp extends OpMode
         {
             drive.setRight(rightJoystick);
         }
-        else
-        {
+        else {
             drive.setRight(0);
         }
 
@@ -81,7 +79,7 @@ public class TeleOp extends OpMode
         }
         else if (!(trapDoorDown) && gamepad2.a && buttonAPressedOff)
         {
-            trapDoorDown = true;
+            flyWheelOn = true;
             buttonAPressedOff = false;
         }
         if (trapDoorDown)
@@ -104,7 +102,7 @@ public class TeleOp extends OpMode
             flyWheelOn = false;
             bumperPressedOff = false;
         }
-        if (!(flyWheelOn) && gamepad2.right_bumper && bumperPressedOff)
+        else if (!(flyWheelOn) && gamepad2.right_bumper && bumperPressedOff)
         {
             flyWheelOn = true;
             bumperPressedOff = false;
@@ -112,18 +110,22 @@ public class TeleOp extends OpMode
         if (flyWheelOn)
 
         {
-            flywheel.setPower(1);
+            flywheel.setPower(-1);
         }
         else
         {
             flywheel.setPower(0);
         }
 
+        boolean sweeperPressedDown = gamepad1.dpad_down;
+
+        boolean sweeperPressedUp = gamepad1.dpad_up;
+
+
         if (gamepad2.dpad_down)
         {
             sweeper.setPower(-1);
-        }
-        else if (gamepad2.dpad_up)
+        } else if (gamepad2.dpad_up)
         {
             sweeper.setPower(1);
         }
@@ -131,6 +133,14 @@ public class TeleOp extends OpMode
         {
             sweeper.setPower(0);
         }
+
+
+
+
+
+
+
+
     }
 }
 

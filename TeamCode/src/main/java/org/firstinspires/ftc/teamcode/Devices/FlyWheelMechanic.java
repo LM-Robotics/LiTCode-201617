@@ -16,7 +16,7 @@ public class FlyWheelMechanic
     {
         flywheel = new DcMotor[1];
 
-        flywheel[0] = hardwareMap.dcMotor.get("flywheelMotor");
+        flywheel[0] = hardwareMap.dcMotor.get("forwardflywheel");
 
     }
 
@@ -26,7 +26,10 @@ public class FlyWheelMechanic
 
     {
         // for each motor in leftMotors
-        flywheel[0].setPower(power);
+        for (DcMotor motor :flywheel){
+            // Set the motor power to power
+            motor.setPower(power);
+        }
     }
 
 
