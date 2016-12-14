@@ -24,6 +24,4 @@ public class TrapDoorMechanic
             // Set the motor power to power
             trapDoor.setPosition(angle);
     }
-
 }
-
