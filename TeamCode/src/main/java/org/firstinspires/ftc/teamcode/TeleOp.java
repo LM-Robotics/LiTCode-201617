@@ -1,15 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import org.firstinspires.ftc.teamcode.Devices.DriveSystem;
 import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 import org.firstinspires.ftc.teamcode.Devices.SweeperMechanic;
 import org.firstinspires.ftc.teamcode.Devices.TrapDoorMechanic;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.Range;
-
-import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot.CLAW_MAX_RANGE;
-import static org.firstinspires.ftc.robotcontroller.external.samples.HardwareK9bot.CLAW_MIN_RANGE;
 
 
 /**
@@ -29,7 +23,6 @@ public class TeleOp extends OpMode
     private boolean buttonAPressedOff = false;
     private boolean trapDoorDown =  false;
     // TeleOp
-
     @Override
     public void init()
     {
@@ -38,40 +31,32 @@ public class TeleOp extends OpMode
         trapdoor = new TrapDoorMechanic(hardwareMap);
         drive = new DriveSystem(hardwareMap);
     }
-
     @Override
     public void loop()
     {
-        // Getting joystick values
-
-       double leftJoystick = gamepad1.left_stick_y;
-
-        double rightJoystick = gamepad1.right_stick_y;
-        if(leftJoystick > 0.05 || leftJoystick < -0.05)
+        if(gamepad1.left_stick_y > 0.05 || gamepad1.left_stick_y < -0.05)
         {
-           drive.setLeft(leftJoystick);
+           drive.setLeft(gamepad1.left_stick_y);
         }
         else
         {
             drive.setLeft(0);
         }
 
-        if (rightJoystick > 0.05 || rightJoystick < -0.05)
+        if (gamepad1.right_stick_y > 0.05 || gamepad1.right_stick_y < -0.05)
         {
-            drive.setRight(rightJoystick);
+            drive.setRight(gamepad1.right_stick_y);
         }
-        else {
+        else
+        {
             drive.setRight(0);
         }
-
 
         if (!(gamepad2.a))
         {
             buttonAPressedOff = true;
         }
 
-        //set motor power
-         //Converting joystick values to motor power values
         if (trapDoorDown && gamepad2.a && buttonAPressedOff)
         {
             trapDoorDown = false;
@@ -79,9 +64,10 @@ public class TeleOp extends OpMode
         }
         else if (!(trapDoorDown) && gamepad2.a && buttonAPressedOff)
         {
-            flyWheelOn = true;
+            trapDoorDown = true;
             buttonAPressedOff = false;
         }
+
         if (trapDoorDown)
         {
             trapdoor.setPosition(0);
@@ -96,7 +82,6 @@ public class TeleOp extends OpMode
             bumperPressedOff = true;
         }
 
-
         if (flyWheelOn && gamepad2.right_bumper && bumperPressedOff)
         {
             flyWheelOn = false;
@@ -107,20 +92,15 @@ public class TeleOp extends OpMode
             flyWheelOn = true;
             bumperPressedOff = false;
         }
-        if (flyWheelOn)
 
+        if (flyWheelOn)
         {
-            flywheel.setPower(-1);
+            flywheel.setPower(-0.5);
         }
         else
         {
             flywheel.setPower(0);
         }
-
-        boolean sweeperPressedDown = gamepad1.dpad_down;
-
-        boolean sweeperPressedUp = gamepad1.dpad_up;
-
 
         if (gamepad2.dpad_down)
         {
@@ -133,16 +113,5 @@ public class TeleOp extends OpMode
         {
             sweeper.setPower(0);
         }
-
-
-
-
-
-
-
-
     }
 }
-
-
-

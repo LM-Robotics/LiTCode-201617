@@ -17,19 +17,13 @@ public class FlyWheelMechanic
         flywheel = new DcMotor[1];
 
         flywheel[0] = hardwareMap.dcMotor.get("forwardflywheel");
-
     }
 
 
     // Sets power of the two left motors
     public synchronized void setPower(double power)
-
     {
-        // for each motor in leftMotors
-        for (DcMotor motor :flywheel){
-            // Set the motor power to power
-            motor.setPower(power);
-        }
+        flywheel[0].setPower(power);
     }
 
 

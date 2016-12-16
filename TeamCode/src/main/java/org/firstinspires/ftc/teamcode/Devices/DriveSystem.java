@@ -9,7 +9,6 @@ public class DriveSystem
     private DcMotor[] leftMotors;
     private DcMotor[] rightMotors;
 
-
     public DriveSystem(HardwareMap hardwareMap)
     {
         leftMotors = new DcMotor[2];
@@ -32,8 +31,6 @@ public class DriveSystem
             motor.setPower(power);
         }
     }
-
-
     // Sets power of the two right motors
     public synchronized void setRight(double power)
     {

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.Devices.DriveSystem;
 
 /**
@@ -8,6 +9,11 @@ import org.firstinspires.ftc.teamcode.Devices.DriveSystem;
 public class Navigation
 {
     private DriveSystem drive;
+
+    public Navigation(HardwareMap hardwareMap)
+    {
+        drive = new DriveSystem(hardwareMap);
+    }
 
     synchronized void driveForward (double power, long time) throws InterruptedException
     {
@@ -19,14 +25,11 @@ public class Navigation
     {
         drive.setBoth(1, -1);
         Thread.sleep(angle*1000);
-
     }
 
     public synchronized void turnLeft (long angle) throws InterruptedException
     {
         drive.setBoth(-1, 1);
         Thread.sleep(angle*1000);
-
     }
-
 }

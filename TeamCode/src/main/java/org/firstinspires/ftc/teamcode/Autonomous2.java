@@ -20,7 +20,7 @@ public class Autonomous2 extends LinearOpMode {
         drive = new DriveSystem(hardwareMap);
         flywheel = new FlyWheelMechanic(hardwareMap);
         trapDoor = new TrapDoorMechanic(hardwareMap);
-        nav = new Navigation();
+        nav = new Navigation(hardwareMap);
 
         waitForStart();
 
