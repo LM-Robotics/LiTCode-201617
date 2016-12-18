@@ -23,6 +23,11 @@ public class Autonomous2 extends LinearOpMode {
         nav = new Navigation(hardwareMap);
 
         waitForStart();
+        nav.driveForward(1,2);
+        Thread.sleep(1);
+        nav.turnLeft(1);
+        Thread.sleep(1);
+        nav.driveForward(1,3);
 
     }
 }

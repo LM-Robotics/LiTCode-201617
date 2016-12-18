@@ -34,18 +34,22 @@ public class TeleOp extends OpMode
     @Override
     public void loop()
     {
-        if(gamepad1.left_stick_y > 0.05 || gamepad1.left_stick_y < -0.05)
+        double leftStick = gamepad1.left_stick_y;
+
+        double rightStick = gamepad1.right_stick_y;
+
+        if(leftStick > 0.05 || leftStick < -0.05)
         {
-           drive.setLeft(gamepad1.left_stick_y);
+           drive.setLeft(leftStick);
         }
         else
         {
             drive.setLeft(0);
         }
 
-        if (gamepad1.right_stick_y > 0.05 || gamepad1.right_stick_y < -0.05)
+        if (rightStick > 0.05 || rightStick< -0.05)
         {
-            drive.setRight(gamepad1.right_stick_y);
+            drive.setRight(rightStick);
         }
         else
         {
@@ -95,7 +99,7 @@ public class TeleOp extends OpMode
 
         if (flyWheelOn)
         {
-            flywheel.setPower(-0.5);
+            flywheel.setPower(-1);
         }
         else
         {
