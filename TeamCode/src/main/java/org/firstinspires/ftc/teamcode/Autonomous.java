@@ -15,6 +15,7 @@ public class Autonomous extends LinearOpMode {
     private TrapDoorMechanic trapDoor;
     private Navigation nav;
 
+
     @Override
     public void runOpMode() throws InterruptedException
     {
