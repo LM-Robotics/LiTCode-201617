@@ -14,12 +14,13 @@ public class beaconServo
         beaconServo = new Servo[1];
         beaconServo[0] = hardwareMap.servo.get("beaconServo");
     }
-    public synchronized void setPosition(double angle)
+    public synchronized void setBeaconPosition(double position)
     {
-        // Set the motor power to power
-        beaconServo[0].setPosition(angle);
+        beaconServo[0].setPosition(0);
     }
-
-
-
+    public synchronized void getCurrentPosition(double position)
+    {
+        // Accesses the current position of the beacon presser
+        beaconServo[0].getPosition();
+    }
 }

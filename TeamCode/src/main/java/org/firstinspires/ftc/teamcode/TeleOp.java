@@ -4,6 +4,7 @@ import org.firstinspires.ftc.teamcode.Devices.DriveSystem;
 import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 import org.firstinspires.ftc.teamcode.Devices.SweeperMechanic;
 import org.firstinspires.ftc.teamcode.Devices.TrapDoorMechanic;
+import org.firstinspires.ftc.teamcode.Devices.BeaconPresserServo.beaconServo;
 
 
 /**
@@ -17,7 +18,9 @@ public class TeleOp extends OpMode
     private FlyWheelMechanic flywheel;
     private SweeperMechanic sweeper;
     private TrapDoorMechanic trapdoor;
+    private beaconServo beacon;
 
+    private boolean beaconPresserOn = false;
     private boolean bumperPressedOff = false;
     private boolean flyWheelOn = false;
     private boolean buttonAPressedOff = false;
@@ -30,6 +33,7 @@ public class TeleOp extends OpMode
         sweeper = new SweeperMechanic(hardwareMap);
         trapdoor = new TrapDoorMechanic(hardwareMap);
         drive = new DriveSystem(hardwareMap);
+        beacon = new beaconServo(hardwareMap);
     }
     @Override
     public void loop()
@@ -116,6 +120,23 @@ public class TeleOp extends OpMode
         else
         {
             sweeper.setPower(0);
+        }
+        if (gamepad2.x)
+        {
+            beaconPresserOn = true;
+
+        }
+        else
+        {
+            beaconPresserOn = false;
+        }
+        if (beaconPresserOn)
+        {
+            beacon.setBeaconPosition(0.5);
+        }
+        else
+        {
+            beacon.setBeaconPosition(0);
         }
     }
 }
