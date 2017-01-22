@@ -38,5 +38,9 @@ public class FlyWheelMechanic
 
     }
 
+    public synchronized void setMaxSpeed(int encoderTicksPerSecond) {
+
+    }
+
 
 }
