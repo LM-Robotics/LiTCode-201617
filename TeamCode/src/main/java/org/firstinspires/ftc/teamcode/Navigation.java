@@ -18,18 +18,7 @@ public class Navigation
     synchronized void driveForward (double power, long time) throws InterruptedException
     {
         drive.setBoth(power, power);
-        Thread.sleep(time*1000);
-    }
-
-    public synchronized void turnRight (long angle) throws InterruptedException
-    {
-        drive.setBoth(1, -1);
-        Thread.sleep(angle*1000);
-    }
-
-    public synchronized void turnLeft (long angle) throws InterruptedException
-    {
-        drive.setBoth(-1, 1);
-        Thread.sleep(angle*1000);
+        Thread.sleep(time);
+        drive.setBoth(0,0);
     }
 }

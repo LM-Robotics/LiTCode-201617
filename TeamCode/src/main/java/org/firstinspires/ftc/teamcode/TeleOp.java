@@ -5,6 +5,8 @@ import org.firstinspires.ftc.teamcode.Devices.FlyWheelMechanic;
 import org.firstinspires.ftc.teamcode.Devices.SweeperMechanic;
 import org.firstinspires.ftc.teamcode.Devices.TrapDoorMechanic;
 import org.firstinspires.ftc.teamcode.Devices.BeaconPresserServo.beaconServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
 
 
 /**
@@ -20,7 +22,8 @@ public class TeleOp extends OpMode
     private TrapDoorMechanic trapdoor;
     private beaconServo beacon;
 
-    private boolean beaconPresserOn = false;
+    private boolean beaconPosition = false;
+    private boolean xPressedOff = false;
     private boolean bumperPressedOff = false;
     private boolean flyWheelOn = false;
     private boolean buttonAPressedOff = false;
@@ -34,6 +37,8 @@ public class TeleOp extends OpMode
         trapdoor = new TrapDoorMechanic(hardwareMap);
         drive = new DriveSystem(hardwareMap);
         beacon = new beaconServo(hardwareMap);
+        flywheel.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        flywheel.setTargetPosition(200);
     }
     @Override
     public void loop()
@@ -41,6 +46,9 @@ public class TeleOp extends OpMode
         double leftStick = gamepad1.left_stick_y;
 
         double rightStick = gamepad1.right_stick_y;
+
+        int encoderPosition = flywheel.getCurrentPosition();
+        telemetry.addData("Encoder Position", encoderPosition);
 
         if(leftStick > 0.05 || leftStick < -0.05)
         {
@@ -103,7 +111,8 @@ public class TeleOp extends OpMode
 
         if (flyWheelOn)
         {
-            flywheel.setPower(-1);
+
+            flywheel.setPower(-.8);
         }
         else
         {
@@ -121,22 +130,22 @@ public class TeleOp extends OpMode
         {
             sweeper.setPower(0);
         }
-        if (gamepad2.x)
-        {
-            beaconPresserOn = true;
 
-        }
-        else
+        if (!(gamepad2.x))
         {
-            beaconPresserOn = false;
+            xPressedOff = true;
         }
-        if (beaconPresserOn)
+        if (gamepad2.x && xPressedOff && beaconPosition)
         {
-            beacon.setBeaconPosition(0.5);
-        }
-        else
-        {
+            beaconPosition = false;
+            xPressedOff = false;
             beacon.setBeaconPosition(0);
+        }
+        else if (gamepad2.x && xPressedOff&& !(beaconPosition))
+        {
+            beaconPosition = true;
+            xPressedOff = false;
+            beacon.setBeaconPosition(.4);
         }
     }
 }

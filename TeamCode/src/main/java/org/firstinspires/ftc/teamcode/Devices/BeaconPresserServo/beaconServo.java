@@ -16,11 +16,11 @@ public class beaconServo
     }
     public synchronized void setBeaconPosition(double position)
     {
-        beaconServo[0].setPosition(0);
+        beaconServo[0].setPosition(position);
     }
-    public synchronized void getCurrentPosition(double position)
+    public synchronized  double getCurrentPosition()
     {
         // Accesses the current position of the beacon presser
-        beaconServo[0].getPosition();
+        return beaconServo[0].getPosition();
     }
 }
