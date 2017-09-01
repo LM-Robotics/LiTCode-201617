@@ -39,6 +39,7 @@ public class TeleOp extends OpMode
         beacon = new beaconServo(hardwareMap);
         flywheel.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         flywheel.setTargetPosition(200);
+
     }
     @Override
     public void loop()
@@ -48,7 +49,10 @@ public class TeleOp extends OpMode
         double rightStick = gamepad1.right_stick_y;
 
         int encoderPosition = flywheel.getCurrentPosition();
+
         telemetry.addData("Encoder Position", encoderPosition);
+
+        flywheel.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         if(leftStick > 0.05 || leftStick < -0.05)
         {

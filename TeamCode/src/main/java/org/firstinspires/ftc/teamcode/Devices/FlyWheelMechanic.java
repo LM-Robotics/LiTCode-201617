@@ -41,6 +41,15 @@ public class FlyWheelMechanic
     public synchronized void setMaxSpeed(int encoderTicksPerSecond) {
 
     }
+    int flywheelposition;
+    public synchronized int pos()
+    {
+
+        flywheel.getCurrentPosition() = flywheelposition;
+        return flywheelposition;
+    }
+
+
 
 
 }
